@@ -117,6 +117,10 @@ loop:
 			x = "hi there"
 		case "*string":
 			x = &make([]string, 1)[0]
+		case "[5]string":
+			x = make([]string, 5)
+		case "[5][5]string":
+			x = make([][]string, 5, 5)
 		case "nil":
 			x = nil
 		default:
@@ -172,6 +176,18 @@ func WhatIsThis(x interface{}) (is string) {
 		is = "*I2"
 	case I2:
 		is = "I2"
+	case [5][5]string:
+		is = "[5][5]string"
+	case [][5]string:
+		is = "[][5]string"
+	case [5][]string:
+		is = "[5][]string"
+	case [][]string:
+		is = "[][]string"
+	case [5]string:
+		is = "[5]string"
+	case []string:
+		is = "[]string"
 	case *interface{}:
 		is = "*interface{}"
 	case interface{}:
